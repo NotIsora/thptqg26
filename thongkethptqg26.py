@@ -166,9 +166,9 @@ def solve():
         sinh = get_score(diem_thi, "Sinh học:")
         su = get_score(diem_thi, "Lịch sử:")
         dia = get_score(diem_thi, "Địa lí:")
-        gdktpl = get_score(diem_thi, "Giáo dục công dân:")
-        tin = get_score(diem_thi, "Tin học:")
-        cong_nghe = get_score(diem_thi, "Công nghệ:")
+        gdktpl = get_score(diem_thi, "KTPL:") or get_score(diem_thi, "Giáo dục công dân:")
+        tin = get_score(diem_thi, "TI:") or get_score(diem_thi, "Tin học:")
+        cong_nghe = get_score(diem_thi, "CNCN:") or get_score(diem_thi, "CNNN:") or get_score(diem_thi, "Công nghệ:")
         
         # Lấy điểm Ngoại ngữ thực tế từ dữ liệu
         anh = get_score(diem_thi, "Tiếng Anh:")

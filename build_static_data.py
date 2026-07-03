@@ -137,9 +137,9 @@ def build():
         sinh = get_score(val, "Sinh học:")
         su = get_score(val, "Lịch sử:")
         dia = get_score(val, "Địa lí:")
-        gdcd = get_score(val, "Giáo dục công dân:")
-        tin = get_score(val, "Tin học:")
-        cong_nghe = get_score(val, "Công nghệ:")
+        gdcd = get_score(val, "KTPL:") or get_score(val, "Giáo dục công dân:")
+        tin = get_score(val, "TI:") or get_score(val, "Tin học:")
+        cong_nghe = get_score(val, "CNCN:") or get_score(val, "CNNN:") or get_score(val, "Công nghệ:")
         
         anh = get_score(val, "Tiếng Anh:")
         phap = get_score(val, "Tiếng Pháp:")
