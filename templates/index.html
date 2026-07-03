@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So Sánh Tổ Hợp Xét Tuyển THPT 2025</title>
+
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f1026 0%, #17183B 50%, #0c0d21 100%);
+            --primary: #8a2be2;
+            --primary-glow: rgba(138, 43, 226, 0.4);
+            --accent-cyan: #00f2fe;
+            --accent-pink: #ff007f;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Decorative glowing circles in the background */
+        .glowing-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            filter: blur(50px);
+            pointer-events: none;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: 10%;
+            left: -100px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        .blob-2 {
+            bottom: 10%;
+            right: -100px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-20px, -50px) scale(0.9);
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff 0%, var(--accent-cyan) 50%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px var(--glass-shadow);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.15);
+        }
+
+        /* Config grid styling */
+        .config-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .config-grid {
+                grid-template-columns: 300px 1fr;
+            }
+        }
+
+        .score-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-group {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .combinations-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comb-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .comb-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .comb-tab-btn.active,
+        .comb-tab-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .comb-container {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .comb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .checkbox-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .checkbox-card input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid var(--text-muted);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-card input[type="checkbox"]:checked {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .checkbox-card input[type="checkbox"]:checked::after {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 11px;
+            color: #0f1026;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .checkbox-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .checkbox-card.selected {
+            background: rgba(0, 242, 254, 0.06);
+            border-color: var(--accent-cyan);
+        }
+
+        .comb-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comb-code {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .comb-subj {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .btn-compare {
+            background: linear-gradient(90deg, var(--primary) 0%, #a020f0 100%);
+            border: none;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-compare:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+            background: linear-gradient(90deg, #a020f0 0%, var(--primary) 100%);
+        }
+
+        /* Results dashboard styling */
+        .results-section {
+            display: none;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 10px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        .comb-result-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comb-result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .comb-result-card.best::before {
+            background: var(--accent-cyan);
+        }
+
+        .comb-result-card.best {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.05);
+        }
+
+        .best-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-code {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .card-subj-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .rank-highlight {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .rank-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rank-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-pink);
+            margin: 5px 0;
+        }
+
+        .rank-desc {
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .detail-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Charts section */
+        .chart-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .chart-box {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            align-self: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Loader styling */
+        .loader-wrapper {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.05);
+            border-top-color: var(--accent-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-wrapper p {
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 80px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar for list container */
+        .comb-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .comb-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .comb-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .comb-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background glowing shapes -->
+    <div class="glowing-blob blob-1"></div>
+    <div class="glowing-blob blob-2"></div>
+
+    <header>
+        <h1><i class="fa-solid fa-graduation-cap"></i> Tra Cứu & So Sánh Tổ Hợp 2025</h1>
+        <p>Hệ thống mô phỏng kỳ thi tốt nghiệp 2025 với điểm thi thuần 3 môn (không xét học bạ), sử dụng điểm Ngoại ngữ
+            thực tế và tự chọn môn học tối ưu.</p>
+    </header>
+
+    <div class="main-container">
+        <!-- Configuration Area -->
+        <div class="glass-panel">
+            <div class="config-grid">
+                <!-- Score Input Box -->
+                <div class="score-box">
+                    <label for="scoreInput"><i class="fa-solid fa-star"></i> Điểm xét tuyển của bạn</label>
+                    <div class="input-group">
+                        <input type="number" id="scoreInput" min="0" max="30.0" step="0.05" value="25.5"
+                            placeholder="Nhập điểm...">
+                    </div>
+                    <button class="btn-compare" id="btnCompare"><i class="fa-solid fa-chart-simple"></i> So sánh
+                        ngay</button>
+                </div>
+
+                <!-- Combinations Selection Box -->
+                <div class="combinations-box">
+                    <label><i class="fa-solid fa-list-check"></i> Chọn tổ hợp môn muốn so sánh</label>
+                    <div class="comb-tabs" id="combTabs">
+                        <button class="comb-tab-btn active" data-filter="all">Tất cả</button>
+                        <button class="comb-tab-btn" data-filter="A">Khối A</button>
+                        <button class="comb-tab-btn" data-filter="B">Khối B</button>
+                        <button class="comb-tab-btn" data-filter="C">Khối C</button>
+                        <button class="comb-tab-btn" data-filter="D">Khối D</button>
+                        <button class="comb-tab-btn" data-filter="Tin">Tin học / Công nghệ</button>
+                    </div>
+                    <div class="comb-container">
+                        <div class="comb-grid" id="combGrid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader-wrapper" id="loader">
+            <div class="spinner"></div>
+            <p>Đang đối chiếu dữ liệu thành phố...</p>
+        </div>
+
+        <!-- Results Dashboard -->
+        <div class="results-section" id="resultsSection">
+            <!-- Summary cards side-by-side -->
+            <div class="stats-grid" id="resultsGrid">
+                <!-- Result cards dynamically inserted here -->
+            </div>
+
+            <!-- Visual Charts -->
+            <div class="chart-box">
+                <!-- Chart 1: Rank Comparison -->
+                <div class="glass-panel chart-card">
+                    <div class="chart-title"><i class="fa-solid fa-users"></i> So sánh thứ hạng (Càng thấp càng tốt)
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="rankChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Better Candidates Count -->
+                <div class="glass-panel chart-card">
+                    <div class="chart-title"><i class="fa-solid fa-trophy"></i> Số lượng thí sinh đạt điểm cao hơn bạn
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="betterCountChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hệ thống Phân tích và Mô phỏng Tuyển sinh THPT 2025. Phát triển dựa trên dữ liệu Diem thi HCM.
+        </p>
+    </footer>
+
+    <script>
+        let allCombinations = [];
+        let activeFilter = 'all';
+        let charts = {};
+
+        // Load combinations list on startup
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/combinations')
+                .then(res => res.json())
+                .then(data => {
+                    allCombinations = data.combinations;
+                    renderCombinations();
+                    // Pre-select some common ones (A00, A01, D01)
+                    setTimeout(() => {
+                        const preselected = ['A00', 'A01', 'D01'];
+                        preselected.forEach(code => {
+                            const checkbox = document.querySelector(`input[data-code="${code}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                checkbox.closest('.checkbox-card').classList.add('selected');
+                            }
+                        });
+                    }, 100);
+                });
+
+            // Set up tab filters
+            const tabs = document.querySelectorAll('.comb-tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeFilter = e.target.dataset.filter;
+                    renderCombinations();
+                });
+            });
+
+            // Set up compare button action
+            document.getElementById('btnCompare').addEventListener('click', performComparison);
+        });
+
+        // Render combination checkboxes based on filter
+        function renderCombinations() {
+            const grid = document.getElementById('combGrid');
+            grid.innerHTML = '';
+
+            const filtered = allCombinations.filter(comb => {
+                if (activeFilter === 'all') return true;
+                if (activeFilter === 'Tin') return comb.code.includes('Tin') || comb.code.includes('CN');
+                // Standard block prefix match A00, B01, etc.
+                return comb.code.startsWith(activeFilter) && !comb.code.includes('Tin') && !comb.code.includes('CN');
+            });
+
+            filtered.forEach(comb => {
+                const card = document.createElement('div');
+                card.className = 'checkbox-card';
+
+                // Keep selection status across re-renders
+                const isChecked = selectedCodes().includes(comb.code);
+                if (isChecked) {
+                    card.classList.add('selected');
+                }
+
+                card.innerHTML = `
+                    <input type="checkbox" data-code="${comb.code}" ${isChecked ? 'checked' : ''}>
+                    <div class="comb-details">
+                        <span class="comb-code">${comb.code}</span>
+                        <span class="comb-subj">${comb.subjects}</span>
+                    </div>
+                `;
+
+                // Handle card click
+                card.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'INPUT') {
+                        const cb = card.querySelector('input');
+                        cb.checked = !cb.checked;
+                        cb.dispatchEvent(new Event('change'));
+                    }
+                });
+
+                // Handle checkbox change
+                const cb = card.querySelector('input');
+                cb.addEventListener('change', () => {
+                    if (cb.checked) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                });
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Get list of selected combination codes
+        function selectedCodes() {
+            // Find checked inputs in the DOM
+            const checked = document.querySelectorAll('#combGrid input[type="checkbox"]:checked');
+            const list = Array.from(checked).map(cb => cb.dataset.code);
+
+            // Merge with state of items not currently rendered (if needed)
+            // But since selectors can cross filters, we fetch ALL checked checkboxes across entire doc
+            const allChecked = document.querySelectorAll('input[type="checkbox"]:checked');
+            return Array.from(allChecked).map(cb => cb.dataset.code);
+        }
+
+        // Fetch rank comparison data from Flask backend
+        function performComparison() {
+            const score = document.getElementById('scoreInput').value;
+            const combs = selectedCodes();
+
+            if (!score || score < 0 || score > 30.0) {
+                alert("Vui lòng nhập điểm số hợp lệ từ 0 đến 30.0");
+                return;
+            }
+
+            if (combs.length === 0) {
+                alert("Vui lòng chọn ít nhất một tổ hợp để tiến hành so sánh.");
+                return;
+            }
+
+            // Show loader, hide old results
+            document.getElementById('loader').style.display = 'flex';
+            document.getElementById('resultsSection').style.display = 'none';
+
+            fetch('/api/compare', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ score: parseFloat(score), combinations: combs })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('loader').style.display = 'none';
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+                    displayResults(data);
+                })
+                .catch(err => {
+                    document.getElementById('loader').style.display = 'none';
+                    alert("Có lỗi xảy ra khi so sánh dữ liệu.");
+                    console.error(err);
+                });
+        }
+
+        // Display output results dynamically
+        function displayResults(data) {
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsGrid = document.getElementById('resultsGrid');
+            resultsGrid.innerHTML = '';
+
+            const items = Object.entries(data.results);
+            if (items.length === 0) return;
+
+            // Find best combination (lowest rank/highest percentile)
+            let bestCode = null;
+            let bestRank = Infinity;
+            items.forEach(([code, stats]) => {
+                if (stats.total > 0 && stats.rank < bestRank) {
+                    bestRank = stats.rank;
+                    bestCode = code;
+                }
+            });
+
+            // Render stats cards
+            items.forEach(([code, stats]) => {
+                const card = document.createElement('div');
+                const isBest = code === bestCode;
+                card.className = `comb-result-card ${isBest ? 'best' : ''}`;
+
+                card.innerHTML = `
+                    ${isBest ? '<span class="best-tag"><i class="fa-solid fa-thumbs-up"></i> Tốt Nhất</span>' : ''}
+                    <div class="card-header-info">
+                        <span class="card-code">${code}</span>
+                        <span class="card-subj-desc">${stats.subjects}</span>
+                    </div>
+                    <div class="rank-highlight">
+                        <div class="rank-title">Thứ hạng của bạn</div>
+                        <div class="rank-value">${stats.total > 0 ? stats.rank.toLocaleString() : 'N/A'}</div>
+                        <div class="rank-desc">trên tổng số <strong>${stats.total.toLocaleString()}</strong> thí sinh</div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Số người điểm cao hơn:</span>
+                        <span class="detail-value" style="color: var(--accent-pink)">${stats.better_count.toLocaleString()}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Vượt qua:</span>
+                        <span class="detail-value" style="color: var(--accent-cyan)">${stats.percentile}% thí sinh</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Điểm trung bình (TP):</span>
+                        <span class="detail-value">${stats.avg}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Điểm trung vị (TP):</span>
+                        <span class="detail-value">${stats.median}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Điểm cao nhất (TP):</span>
+                        <span class="detail-value" style="color: #ffcc00">${stats.max}</span>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+
+            // Update charts
+            renderCharts(data.results);
+
+            // Scroll down to results smooth
+            resultsSection.style.display = 'flex';
+            setTimeout(() => {
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // Render analysis charts using Chart.js
+        function renderCharts(results) {
+            const labels = Object.keys(results);
+            const ranks = Object.values(results).map(r => r.rank);
+            const totals = Object.values(results).map(r => r.total);
+            const betters = Object.values(results).map(r => r.better_count);
+
+            // Destroy old charts to prevent duplicate canvases
+            if (charts.rank) charts.rank.destroy();
+            if (charts.better) charts.better.destroy();
+
+            // Chart 1: Ranks Horizontal Bar
+            const ctxRank = document.getElementById('rankChart').getContext('2d');
+            charts.rank = new Chart(ctxRank, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Thứ hạng của bạn',
+                        data: ranks,
+                        backgroundColor: 'rgba(255, 0, 127, 0.6)',
+                        borderColor: '#ff007f',
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        hoverBackgroundColor: 'rgba(255, 0, 127, 0.8)'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#f3f4f6', font: { weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Better Candidates count Bar chart
+            const ctxBetter = document.getElementById('betterCountChart').getContext('2d');
+            charts.better = new Chart(ctxBetter, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượng thí sinh điểm cao hơn',
+                        data: betters,
+                        backgroundColor: 'rgba(0, 242, 254, 0.6)',
+                        borderColor: '#00f2fe',
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        hoverBackgroundColor: 'rgba(0, 242, 254, 0.8)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#f3f4f6', font: { weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
