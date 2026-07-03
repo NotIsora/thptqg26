@@ -1,4 +1,4 @@
-# So Sánh Tổ Hợp Xét Tuyển THPT 2025
+# So Sánh Tổ Hợp Xét Tuyển THPT 2026
 
 Ứng dụng giúp học sinh tra cứu, tính toán và so sánh trực quan thứ hạng điểm thi THPT của mình giữa các tổ hợp môn khác nhau trên toàn TP.HCM.
 

@@ -137,7 +137,7 @@ def load_data():
         toan = get_score(val, "Toán:")
         van = get_score(val, "Ngữ văn:")
         
-        # Kỳ thi tốt nghiệp 2025: Bắt buộc Toán và Văn
+        # Kỳ thi tốt nghiệp 2026: Bắt buộc Toán và Văn
         if toan is None or van is None:
             continue
             

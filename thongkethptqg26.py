@@ -29,7 +29,7 @@ def solve():
         sys.stdout.reconfigure(encoding='utf-8')
         sys.stderr.reconfigure(encoding='utf-8')
 
-    # Danh sách tất cả tổ hợp xét tuyển truyền thống 2025 (Khối A, B, C, D)
+    # Danh sách tất cả tổ hợp xét tuyển truyền thống 2026 (Khối A, B, C, D)
     combinations_list = [
         # Khối A
         ("Toán", "Vật lí", "Hóa học"),     # A00
@@ -114,7 +114,7 @@ def solve():
         ("Ngữ văn", "Giáo dục kinh tế và pháp luật", "Tiếng Trung"),# D71
         ("Toán", "Tiếng Anh", "Giáo dục kinh tế và pháp luật"),  # D84
 
-        # Các tổ hợp môn mới liên quan đến Tin học & Công nghệ (2025)
+        # Các tổ hợp môn mới liên quan đến Tin học & Công nghệ (2026)
         ("Toán", "Tin học", "Tiếng Anh"),
         ("Toán", "Tin học", "Vật lí"),
         ("Toán", "Tin học", "Hóa học"),
@@ -179,7 +179,7 @@ def solve():
         nga = get_score(diem_thi, "Tiếng Nga:")
         han = get_score(diem_thi, "Tiếng Hàn:")
         
-        # Định dạng kỳ thi tốt nghiệp 2025: Bắt buộc Toán + Ngữ văn, và chọn 2 môn tự chọn
+        # Định dạng kỳ thi tốt nghiệp 2026: Bắt buộc Toán + Ngữ văn, và chọn 2 môn tự chọn
         if toan is None or van is None:
             continue
             
